@@ -1,0 +1,126 @@
+// This Pine Script® code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © DkCorp
+
+//@version=6
+indicator("[Bolchain®️] RM PRO v1 [by DkCorp]",overlay=true,max_lines_count=500,max_boxes_count=500,max_labels_count=500)
+
+_a=input.int(20,"Ancho del Trade \(Velas\)",group="GENERAL")
+_b=input.bool(true,"Mostrar Línea de Liquidación",group="GENERAL")
+_c=input.bool(false,"Mostrar Panel de Datos",group="GENERAL")
+_d=input.float(1000,"Balance de Cuenta \(\$\)",step=10,group="GENERAL")
+_e=input.float(1.,"Riesgo %",step=.1,group="GENERAL")
+_f=input.int(10,"Apalancamiento",minval=1,group="GENERAL")
+_g=input.float(.5,"Margen de Mantenimiento %",step=.1,group="GENERAL")
+
+_h=input.bool(true,"Activar Trade 1",group="TRADE 1")
+_i=input.string("OFFSET","Modo de Anclaje",options=["OFFSET","TIME"],group="TRADE 1")
+_j=input.int(0,"Velas hacia atrás \(Offset\)",group="TRADE 1")
+_k=input.time(timestamp("2026-05-13 00:00"),"Tiempo \(Modo TIME\)",group="TRADE 1")
+_l=input.price(0,"Entry \(Click en la mirilla ->\)",group="TRADE 1")
+_m=input.price(0,"Stop \(Click en la mirilla ->\)",group="TRADE 1")
+_n=input.float(1.7,"Riesgo/Beneficio \(RR\)",group="TRADE 1")
+_o=input.float(100,"% Cierre en TP",group="TRADE 1")
+
+_p=input.bool(false,"Activar Trade 2",group="TRADE 2")
+_q=input.string("OFFSET","Modo de Anclaje",options=["OFFSET","TIME"],group="TRADE 2")
+_r=input.int(0,"Velas hacia atrás \(Offset\)",group="TRADE 2")
+_s=input.time(timestamp("2026-05-13 00:00"),"Tiempo \(Modo TIME\)",group="TRADE 2")
+_t=input.price(0,"Entry \(Click en la mirilla ->\)",group="TRADE 2")
+_u=input.price(0,"Stop \(Click en la mirilla ->\)",group="TRADE 2")
+_v=input.float(2.,"Riesgo/Beneficio \(RR\)",group="TRADE 2")
+_w=input.float(100,"% Cierre en TP",group="TRADE 2")
+
+x=color.rgb(0,140,255),y=color.rgb(0,200,120),z=color.rgb(255,70,70)
+zz=color.yellow
+zx=color.rgb(50,53,63)
+
+A=_l==0?close:_l
+B=_m==0?close*.99:_m
+C=_t==0?close:_t
+D=_u==0?close*.99:_u
+
+E=nz(timeframe.in_seconds("")*1000,60000)
+
+var int F=na
+if time>=_k and na(F)
+    F:=time
+
+var int G=na
+if time>=_s and na(G)
+    G:=time
+
+type H
+    line a=na
+    line b=na
+    line c=na
+    line d=na
+    box e=na
+    box f=na
+    label g=na
+    label h=na
+    label i=na
+    label j=na
+
+var H I=H.new()
+var H J=H.new()
+
+method K(H L,bool M,string N,int O,int P,float Q,float R,float S,float T,int U,int V)=>
+    if not na(L.a)
+        L.a.delete(),L.b.delete(),L.c.delete(),L.d.delete(),L.e.delete(),L.f.delete(),L.g.delete(),L.h.delete(),L.i.delete(),L.j.delete()
+    if M
+        W=Q>R
+        X=time
+        if N=="OFFSET"
+            X:=O<=300 and bar_index>O?time[O]:time-(O*V)
+        else
+            X:=na(P)?time:P
+        Y=X+(_a*V)
+        Z=X+math.round((Y-X)/2)
+        a0=_d*(_e/100)
+        a1=math.max(math.abs(Q-R),syminfo.mintick)
+        a2=W?Q+(a1*S):Q-(a1*S)
+        a3=a0/a1
+        a4=(a3*Q)/_f
+        a5=_g/100
+        a6=W?Q*(1-(1/_f)+a5):Q*(1+(1/_f)-a5)
+        a7=W?high>=a2:low<=a2
+        a8=W?low<=R:high>=R
+        a9=a7?"TP HIT ✅":a8?"SL HIT ❌":"OPEN 🔵"
+        L.a:=line.new(X,Q,Y,Q,xloc=xloc.bar_time,color=x,width=2)
+        L.b:=line.new(X,R,Y,R,xloc=xloc.bar_time,color=z,width=2)
+        L.c:=line.new(X,a2,Y,a2,xloc=xloc.bar_time,color=y,width=2)
+        if _b
+            L.d:=line.new(X,a6,Y,a6,xloc=xloc.bar_time,color=zz,width=1,style=line.style_dashed)
+        L.e:=box.new(left=X,top=W?a2:Q,right=Y,bottom=W?Q:a2,xloc=xloc.bar_time,bgcolor=color.new(y,85),border_color=y)
+        L.f:=box.new(left=X,top=W?Q:R,right=Y,bottom=W?R:Q,xloc=xloc.bar_time,bgcolor=color.new(z,85),border_color=z)
+        b0=color.new(zx,30)
+        b1=a3*math.abs(a2-Q)*(T/100)
+        b2=(b1/a4)*100
+        b3="TRADE #"+str.tostring(U)+" | "+a9+"\n--------------------------\nRiesgo: $"+str.tostring(a0,"#.##")+" ("+str.tostring(_e)+"%)\nVolumen: "+str.tostring(a3,"#.####")+" "+syminfo.basecurrency+"\nMargen Req: $"+str.tostring(a4,"#.##")+"\nROE TP: "+str.tostring(b2,"#.##")+"%\nLiq: "+str.tostring(a6,format.mintick)
+        b4=a1*.15
+        b5=W?R-b4:R+b4
+        b6=W?label.style_label_up:label.style_label_down
+        L.g:=label.new(Z,b5,b3,xloc=xloc.bar_time,style=b6,color=b0,textcolor=color.white,size=size.small)
+        L.h:=label.new(Y,a2,"TP: "+str.tostring(a2,format.mintick)+"\n (+$"+str.tostring(b1,"#.##")+")",xloc=xloc.bar_time,style=label.style_label_left,color=y,textcolor=color.white,size=size.normal)
+        L.j:=label.new(Y,Q,"Entry: "+str.tostring(Q,format.mintick)+"\n (Margen: $"+str.tostring(a4,"#.##")+")\n"+"x"+str.tostring(_f),xloc=xloc.bar_time,style=label.style_label_upper_left,color=x,textcolor=color.white,size=size.normal)
+        L.i:=label.new(Y,R,"SL: "+str.tostring(R,format.mintick)+"\n (-$"+str.tostring(a0,"#.##")+")",xloc=xloc.bar_time,style=label.style_label_left,color=z,textcolor=color.white,size=size.normal)
+
+if barstate.islast
+    I.K(_h,_i,_j,F,A,B,_n,_o,1,E)
+    J.K(_p,_q,_r,G,C,D,_v,_w,2,E)
+
+var table Y0=table.new(position.bottom_center,2,6,border_width=1,border_color=color.gray)
+if _c and barstate.islast
+    Z0=color.new(color.black,0)
+    table.cell(Y0,0,0,"ACCOUNT METRIC",bgcolor=Z0,text_color=color.white)
+    table.cell(Y0,1,0,"VALUE",bgcolor=Z0,text_color=color.white)
+    table.cell(Y0,0,1,"Balance",bgcolor=color.new(color.gray,90))
+    table.cell(Y0,1,1,"$"+str.tostring(_d,"#.##"))
+    table.cell(Y0,0,2,"Risk per Trade",bgcolor=color.new(color.gray,90))
+    table.cell(Y0,1,2,str.tostring(_e)+"% ($"+str.tostring(_d*_e/100,"#.##")+")")
+    table.cell(Y0,0,3,"Leverage",bgcolor=color.new(color.gray,90))
+    table.cell(Y0,1,3,"x"+str.tostring(_f))
+    table.cell(Y0,0,4,"Symbol",bgcolor=color.new(color.gray,90))
+    table.cell(Y0,1,4,syminfo.ticker)
+    table.cell(Y0,0,5,"Status",bgcolor=color.new(color.gray,90))
+    table.cell(Y0,1,5,"System Active ✅",text_color=color.green)
