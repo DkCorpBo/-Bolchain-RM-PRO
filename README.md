@@ -54,8 +54,8 @@ El indicador automáticamente calculará:
 
 Además, los niveles pueden moverse visualmente desde el gráfico y el sistema actualizará automáticamente toda la operación.
 
-<img width="250" height="500" alt="Captura de pantalla 2026-05-18 150835" src="https://github.com/user-attachments/assets/073ba4a2-de23-406b-8a30-882c6fc6af6b" />
-<img width="500" height="400" alt="Captura de pantalla 2026-05-13 163140" src="https://github.com/user-attachments/assets/f665c15c-a9d1-49b3-941b-6de6f0e073d4" />
+<img width="300" height="500" alt="Captura de pantalla 2026-05-18 150835" src="https://github.com/user-attachments/assets/073ba4a2-de23-406b-8a30-882c6fc6af6b" />
+<img width="600" height="500" alt="Captura de pantalla 2026-05-13 163140" src="https://github.com/user-attachments/assets/f665c15c-a9d1-49b3-941b-6de6f0e073d4" />
 
 
 ---
