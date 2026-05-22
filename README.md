@@ -13,16 +13,16 @@ Actualmente el proyecto se encuentra en fase de pruebas y feedback.
 
 # Características
 
-✅ Cálculo automático de riesgo
-✅ Tamaño de posición dinámico
-✅ Take Profit automático
-✅ ROE estimado
-✅ Margen requerido
-✅ Precio de liquidación
-✅ Detección automática LONG / SHORT
-✅ Configuración de RR personalizada
-✅ Soporte para múltiples trades
-✅ Movimiento histórico mediante OFFSET o TIME
+✅ Cálculo automático de riesgo.
+✅ Tamaño de posición dinámico.
+✅ Take Profit automático.
+✅ ROE estimado.
+✅ Margen requerido.
+✅ Precio de liquidación.
+✅ Detección automática LONG / SHORT.
+✅ Configuración de RR personalizada.
+✅ Soporte para múltiples trades.
+✅ Movimiento histórico mediante OFFSET o TIME.
 
 # LONG / SHORT Automático
 
