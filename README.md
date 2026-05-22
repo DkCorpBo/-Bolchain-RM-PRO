@@ -1,5 +1,5 @@
 # RM PRO v1
-<img width="200" height="100" alt="Logo-blanco" src="https://github.com/user-attachments/assets/5631fb49-080c-4007-911c-87f7e54234d3" />
+<img width="200" height="160" alt="Logo-blanco" src="https://github.com/user-attachments/assets/5631fb49-080c-4007-911c-87f7e54234d3" />
 
 RM PRO v1 es un indicador desarrollado para facilitar la gestión de riesgo directamente desde el gráfico en TradingView.
 
@@ -54,9 +54,9 @@ El indicador automáticamente calculará:
 
 Además, los niveles pueden moverse visualmente desde el gráfico y el sistema actualizará automáticamente toda la operación.
 
-<img width="506" height="468" alt="Captura de pantalla 2026-05-13 163140" src="https://github.com/user-attachments/assets/f665c15c-a9d1-49b3-941b-6de6f0e073d4" />
+<img width="300" height="200" alt="Captura de pantalla 2026-05-13 163140" src="https://github.com/user-attachments/assets/f665c15c-a9d1-49b3-941b-6de6f0e073d4" />
 
-<img width="524" height="913" alt="Captura de pantalla 2026-05-18 150835" src="https://github.com/user-attachments/assets/073ba4a2-de23-406b-8a30-882c6fc6af6b" />
+<img width="200" height="400" alt="Captura de pantalla 2026-05-18 150835" src="https://github.com/user-attachments/assets/073ba4a2-de23-406b-8a30-882c6fc6af6b" />
 ---
 
 # Instalación
@@ -91,4 +91,3 @@ El feedback es bienvenido.
 Uso personal y educativo únicamente.
 
 No está permitida la reventa, redistribución comercial o publicación como trabajo propio sin autorización.
-<img width="933" height="635" alt="Captura de pantalla 2026-05-13 180629" src="https://github.com/user-attachments/assets/1cd13cb7-973c-4f4f-bbb2-80b5acd6ae9c" />
