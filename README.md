@@ -3,7 +3,7 @@
 
 RM PRO v1 es un indicador desarrollado para facilitar la gestión de riesgo directamente desde el gráfico en TradingView.
 
-<img width="933" height="635" alt="Captura de pantalla 2026-05-13 180629" src="https://github.com/user-attachments/assets/43edb62a-3afd-4937-9bc5-0a63d452fbb4" />
+<img width="800" height="500" alt="Captura de pantalla 2026-05-13 180629" src="https://github.com/user-attachments/assets/43edb62a-3afd-4937-9bc5-0a63d452fbb4" />
 
 La idea principal es simplificar el cálculo y visualización de operaciones de forma rápida e intuitiva, permitiendo ajustar setups visualmente mientras el sistema recalcula automáticamente toda la información del trade.
 
