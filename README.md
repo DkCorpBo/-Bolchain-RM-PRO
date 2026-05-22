@@ -1,5 +1,5 @@
 # RM PRO v1
-<img width="300" height="150" alt="Logo-blanco" src="https://github.com/user-attachments/assets/5631fb49-080c-4007-911c-87f7e54234d3" />
+<img width="300" height="100" alt="Logo-blanco" src="https://github.com/user-attachments/assets/5631fb49-080c-4007-911c-87f7e54234d3" />
 
 RM PRO v1 es un indicador desarrollado para facilitar la gestión de riesgo directamente desde el gráfico en TradingView.
 
